@@ -1,0 +1,109 @@
+@import '../../../../common/scss/breakpoints.scss';
+@import '../../../../common/scss/variables.scss';
+
+.modal {
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #00000080;
+    z-index: 1000;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    height: 52px;
+    margin-bottom: 8px;
+
+    @include for-large {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__content {
+    position: relative;
+    top: 37vh;
+    width: 95%;
+    height: 28vh;
+    padding: 15px 24px 0 10px;
+    color: $main-text-color;
+    background-color: $white-color;
+    border-radius: 12px;
+
+    @include for-large {
+      position: static;
+      width: 373px;
+      height: 184px;
+      padding: 0 16px;
+    }
+
+    &_close-icon {
+      display: none;
+      cursor: pointer;
+
+      @include for-large {
+        display: block;
+        color: $light-gray-text-color;
+      }
+    }
+  }
+
+  &__title {
+    flex: 1;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 600;
+    text-align: center;
+  }
+}
+
+.option__radio-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding-left: 42px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  cursor: pointer;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    width: 20px;
+    height: 20px;
+    border: 2px solid $violet-color;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+  }
+}
+
+input[type='radio'] {
+  display: none;
+}
+
+input[type='radio']:checked + .option__radio-button::before {
+  background-color: $violet-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input[type='radio']:checked + .option__radio-button::after {
+  content: '';
+  position: absolute;
+  left: 14px;
+  width: 8px;
+  height: 8px;
+  background-color: $white-color;
+  border-radius: 50%;
+}

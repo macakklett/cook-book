@@ -1,0 +1,14 @@
+$sm: 400px;
+$lg: 1200px;
+
+@mixin for-extra-small {
+  @media (max-width: $sm) {
+    @content;
+  }
+}
+
+@mixin for-large {
+  @media (min-width: $lg) {
+    @content;
+  }
+}

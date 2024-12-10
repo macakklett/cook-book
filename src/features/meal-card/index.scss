@@ -1,0 +1,99 @@
+@import '../../common/scss/breakpoints.scss';
+@import '../../common/scss/variables.scss';
+
+.employee-card {
+  &__profile {
+    height: 100vh;
+    color: $main-text-color;
+    box-shadow: 0 4px 8px #0000001a;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 55px;
+    margin-bottom: 6px;
+    background-color: $background-light-color;
+
+    @include for-large {
+      margin-bottom: 8px;
+      padding-top: 25px;
+    }
+  }
+
+  &__data {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    padding-left: 16px;
+    margin-bottom: 6px;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+  }
+}
+
+.info {
+  &__avatar {
+    width: 300px;
+    height: 300px;
+    margin-bottom: 24px;
+    border-radius: 50%;
+    object-fit: contain;
+  }
+
+  &__name {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 28px;
+    margin-bottom: 12px;
+  }
+
+  &__tag {
+    font-size: 17px;
+    line-height: 22px;
+    color: $gray-text-color;
+    margin-left: 4px;
+  }
+
+  &__position {
+    font-size: 13px;
+    line-height: 16px;
+    margin-bottom: 24px;
+    color: $dark-gray-text-color;
+  }
+}
+
+.birthdate {
+  &__age {
+    margin-left: auto;
+    margin-right: 24px;
+    color: $gray-text-color;
+  }
+}
+
+.back-icon {
+  align-self: flex-start;
+  margin-left: 21px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  @include for-large {
+    margin-left: 26px;
+    margin-bottom: 28px;
+  }
+}
+
+.star-icon {
+  margin-right: 20px;
+}
+
+.phone-icon {
+  margin-right: 18px;
+}
+
+.phone-link {
+  color: $main-text-color;
+}

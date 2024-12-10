@@ -1,0 +1,57 @@
+@import '../../../../common/scss/variables.scss';
+
+.employee-list__item {
+  display: flex;
+  align-items: center;
+  padding: 6px 0 0 16px;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.employee {
+  &__avatar {
+    width: 72px;
+    height: 72px;
+    margin-right: 16px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__name {
+    line-height: 20px;
+    color: $main-text-color;
+
+    &:hover {
+      color: #b189b6;
+    }
+  }
+
+  &__position {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 16px;
+    margin: 0;
+    color: $dark-gray-text-color;
+  }
+
+  &__tag {
+    font-size: 12px;
+    color: $gray-text-color;
+    margin-left: 4px;
+  }
+
+  &__birthdate {
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 400;
+    color: $dark-gray-text-color;
+    margin: 0 10px 0 auto;
+    padding-bottom: 10px;
+  }
+}

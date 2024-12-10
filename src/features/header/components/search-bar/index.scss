@@ -1,0 +1,54 @@
+@import '../../../../common/scss/breakpoints.scss';
+@import '../../../../common/scss/variables.scss';
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 343px;
+  margin: 0 0 18px 16px;
+
+  @include for-large {
+    width: 100%;
+    padding-right: 16px;
+  }
+
+  &__input {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 12px;
+    background-color: $background-light-color;
+    border-radius: 20px;
+  }
+
+  &__burger-menu {
+    cursor: pointer;
+  }
+
+  &__clear {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    padding: 0 8px;
+    color: $violet-color;
+    cursor: pointer;
+  }
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 0 8px;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 500;
+  color: $main-text-color;
+  background-color: transparent;
+  border: none;
+  outline: none;
+
+  &::placeholder {
+    color: $light-gray-text-color;
+  }
+}
