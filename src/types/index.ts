@@ -39,6 +39,7 @@ export type MealsState = {
   currentPage: number;
   mealsPerPage: number;
   totalMeals: number;
+  selectedCategory: string;
   status: StatusOfProcessing;
   error: string | null;
 };
@@ -53,12 +54,4 @@ export type ErrorData = {
   link: string;
 };
 
-export type RequestParams = {
-  positionQuery?: FilterPosition;
-  searchText?: string;
-  sortBy?: SortingEmployees;
-};
-
-export type FilterPosition = 'all' | 'designer' | 'analyst' | 'manager' | 'iOS' | 'android';
-export type SortingEmployees = 'name' | 'birthDate';
 export type StatusOfProcessing = 'loading' | 'completed' | 'error';

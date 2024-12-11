@@ -1,0 +1,30 @@
+.cart-summary {
+  padding: 16px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.cart-summary h2,
+.cart-summary h3 {
+  margin: 0 0 8px;
+  color: #333;
+}
+
+.meal-list,
+.ingredient-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 0 16px;
+}
+
+.meal-item,
+.ingredient-item {
+  padding: 4px 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.meal-item:last-child,
+.ingredient-item:last-child {
+  border-bottom: none;
+}

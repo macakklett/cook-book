@@ -7,8 +7,9 @@ type fetchMealsError = {
 };
 
 const API_URL = 'https://www.themealdb.com/api/json/v1/1/search.php';
+const CATEGORIES_API_URL = 'https://www.themealdb.com/api/json/v1/1/list.php?c=list';
 
-export const fetchMealsAPI = async (search: string = ''): Promise<Meal[]> => {
+const fetchMealsAPI = async (search: string = ''): Promise<Meal[]> => {
   const {
     data: { meals },
   } = await axios.get(API_URL, {
@@ -28,5 +29,10 @@ const fetchMeals = createAsyncThunk<Meal[], string, { rejectValue: fetchMealsErr
     }
   },
 );
+
+export const fetchCategories = async (): Promise<string[]> => {
+  const response = await axios.get(CATEGORIES_API_URL);
+  return response.data.meals.map((meal: { strCategory: string }) => meal.strCategory);
+};
 
 export default fetchMeals;

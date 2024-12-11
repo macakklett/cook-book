@@ -4,7 +4,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 
 import './index.scss';
 
-const EmployeesListSceleton: React.FC = () => {
+const MealsListSceleton: React.FC = () => {
   return (
     <>
       {Array.from({ length: 9 }).map((_, index) => (
@@ -24,4 +24,4 @@ const EmployeesListSceleton: React.FC = () => {
   );
 };
 
-export default EmployeesListSceleton;
+export default MealsListSceleton;

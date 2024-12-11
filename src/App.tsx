@@ -5,7 +5,7 @@ import fetchMeals from './redux/gateways';
 import MealCard from './features/meal-card';
 import Error from './features/error';
 import Header from './features/header';
-import EmployeesList from './features/employeesList';
+import MealsList from './features/mealsList';
 
 const router = createBrowserRouter([
   {
@@ -13,7 +13,7 @@ const router = createBrowserRouter([
     element: (
       <>
         <Header />
-        <EmployeesList />
+        <MealsList />
       </>
     ),
   },

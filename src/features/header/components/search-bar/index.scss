@@ -22,19 +22,6 @@
     background-color: $background-light-color;
     border-radius: 20px;
   }
-
-  &__burger-menu {
-    cursor: pointer;
-  }
-
-  &__clear {
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 18px;
-    padding: 0 8px;
-    color: $violet-color;
-    cursor: pointer;
-  }
 }
 
 .search-bar input {

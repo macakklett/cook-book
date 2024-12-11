@@ -1,13 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import fetchMeals from './gateways';
 import type { MealsState } from '@/types';
-import type { RootState } from './store';
 
 const initialState: MealsState = {
   meals: [],
   currentPage: 1,
   mealsPerPage: 3,
   totalMeals: 0,
+  selectedCategory: '',
   status: 'completed',
   error: null,
 };
@@ -18,6 +18,9 @@ const mealsSlice = createSlice({
   reducers: {
     setCurrentPage: (state, action) => {
       state.currentPage = action.payload;
+    },
+    setSelectedCategory: (state, action) => {
+      state.selectedCategory = action.payload;
     },
   },
   extraReducers: builder => {
@@ -38,12 +41,6 @@ const mealsSlice = createSlice({
   },
 });
 
-export const { setCurrentPage } = mealsSlice.actions;
-
-export const selectMealsForCurrentPage = (state: RootState) => {
-  const startIndex = (state.meals.currentPage - 1) * state.meals.mealsPerPage;
-  const endIndex = startIndex + state.meals.mealsPerPage;
-  return state.meals.meals.slice(startIndex, endIndex);
-};
+export const { setCurrentPage, setSelectedCategory } = mealsSlice.actions;
 
 export default mealsSlice.reducer;

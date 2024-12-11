@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { selectMealById, selectStatus } from '@/redux/mealsSelectors';
 import Error from '@/features/error';
-import CardSkeleton from '@/features/meal-card/components/employee-card-skeleton';
+import CardSkeleton from '@/features/meal-card/components/meal-card-skeleton';
 import type { RootState } from '@/redux/store';
 import type { Meal, StatusOfProcessing } from '@/types';
 
@@ -33,8 +33,8 @@ const MealCard: React.FC = () => {
   }
 
   return (
-    <div className="employee-card__profile">
-      <div className="employee-card__info info">
+    <div className="meal-card__profile">
+      <div className="meal-card__info info">
         <button
           onClick={() => (hasNavigated.current ? navigate(-1) : navigate('/'))}
           className="back-icon"

@@ -1,42 +1,40 @@
-import React, { useEffect, useMemo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useSearchParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import fetchMeals from '@/redux/gateways';
-import { setCurrentPage, selectMealsForCurrentPage } from '@/redux/mealsSlice';
+import { setCurrentPage } from '@/redux/mealsSlice';
 import { debounce } from 'lodash';
-import { RootState } from '@/redux/store';
+import { AppDispatch } from '@/redux/store';
+
 import './index.scss';
 
+const debouncedFetchMeals = debounce((search: string, dispatch: AppDispatch) => {
+  dispatch(fetchMeals(search));
+}, 1700);
+
 const SearchBar: React.FC = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const dispatch = useDispatch();
+  const [searchText, setSearchText] = useState<string>('');
+  const dispatch = useDispatch<AppDispatch>();
 
-  const requestParams = Object.fromEntries([...searchParams]);
-  const filterText = requestParams.searchText || '';
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const value: string = e.target.value;
+    setSearchText(value);
+    dispatch(setCurrentPage(1));
 
-  const meals = useSelector((state: RootState) => selectMealsForCurrentPage(state));
-  const currentPage = useSelector((state: RootState) => state.meals.currentPage);
-  const totalMeals = useSelector((state: RootState) => state.meals.totalMeals);
-  const mealsPerPage = useSelector((state: RootState) => state.meals.mealsPerPage);
-
-  const totalPages = Math.ceil(totalMeals / mealsPerPage);
-
-  const handleSearch = useMemo(
-    () =>
-      debounce((search: string) => {
-        dispatch(fetchMeals(search));
-        setSearchParams({ searchText: search });
-      }, 1500),
-    [dispatch, setSearchParams],
-  );
-
-  const handlePageChange = (page: number) => {
-    dispatch(setCurrentPage(page));
+    if (value === '') {
+      dispatch(fetchMeals(''));
+    } else {
+      debouncedFetchMeals(value, dispatch);
+    }
   };
 
   useEffect(() => {
-    dispatch(fetchMeals(filterText));
-  }, [dispatch, filterText]);
+    if (searchText) {
+      debouncedFetchMeals(searchText, dispatch);
+    }
+    return () => {
+      debouncedFetchMeals.cancel();
+    };
+  }, [searchText, dispatch]);
 
   return (
     <div>
@@ -44,27 +42,10 @@ const SearchBar: React.FC = () => {
         <input
           type="text"
           placeholder="Search by name..."
-          value={filterText}
-          onChange={e => handleSearch(e.target.value)}
+          value={searchText}
+          onChange={handleInputChange}
+          className="search-bar__input"
         />
-      </div>
-
-      <div className="meals">
-        {meals.map(meal => (
-          <div key={meal.idMeal}>{meal.strMeal}</div>
-        ))}
-      </div>
-
-      <div className="pagination">
-        {Array.from({ length: totalPages }, (_, index) => (
-          <button
-            key={index + 1}
-            onClick={() => handlePageChange(index + 1)}
-            disabled={currentPage === index + 1}
-          >
-            {index + 1}
-          </button>
-        ))}
       </div>
     </div>
   );
