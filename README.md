@@ -1,6 +1,6 @@
-### Project: Employees directory
+### Project: CookBook
 
-### [Site Link](https://employee-directory-react-app.netlify.app/)
+### [Site Link](https://cookbook-test-task.netlify.app/)
 
 Employees directory app is implemented for educational purposes on Netlify
 
